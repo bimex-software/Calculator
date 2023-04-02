@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f2f2f2;
+	font-family: Arial, sans-serif;
+}
+
+.calculator {
+	margin: 50px auto;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	padding: 20px;
+	width: 300px;
+}
+
+.display {
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.display input {
+	border: none;
+	background-color: transparent;
+	font-size: 1.5em;
+	width: 100%;
+	text-align: right;
+}
+
+.keys {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+}
+
+button {
+	background-color: #e6e6e6;
+	border: none;
+	border-radius: 5px;
+	color: #333;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: 10px;
+	transition: background-color .2s ease;
+}
+
+button:hover {
+	background-color: #d4d4d4;
+}
+
+.number {
+	grid-column: span 1;
+}
+
+.operator {
+	grid-column: span 1;
+	background-color: #ffa500;
+	color: #fff;
+}
+
+.equal {
+	grid-column: span 2;
+	background-color: #ffa500;
+	color: #fff;
+}
+
+.clear {
+	grid-column: span 2;
+	background-color: #a9a9a9;
+	color: #fff;
+
+</style>
+</head>
+<body>
+	<div class="calculator">
+		<div class="display">
+			<input type="text" id="result" readonly>
+		</div>
+		<div class="keys">
+			<button class="number" onclick="addToDisplay('7')">7</button>
+			<button class="number" onclick="addToDisplay('8')">8</button>
+			<button class="number" onclick="addToDisplay('9')">9</button>
+			<button class="operator" onclick="addToDisplay('/')">÷</button>
+			<button class="number" onclick="addToDisplay('4')">4</button>
+			<button class="number" onclick="addToDisplay('5')">5</button>
+			<button class="number" onclick="addToDisplay('6')">6</button>
+			<button class="operator" onclick="addToDisplay('*')">×</button>
+			<button class="number" onclick="addToDisplay('1')">1</button>
+			<button class="number" onclick="addToDisplay('2')">2</button>
+			<button class="number" onclick="addToDisplay('3')">3</button>
+			<button class="operator" onclick="addToDisplay('-')">-</button>
+			<button class="number" onclick="addToDisplay('0')">0</button>
+			<button class="number" onclick="addToDisplay('.')">.</button>
+			<button class="equal" onclick="calculate()">=</button>
+			<button class="operator" onclick="addToDisplay('+')">+</button>
+			<button class="clear" onclick="clearDisplay()">Clear</button>
+		</div>
+	</div>
+<script>
+let result = document.getElementById('result');
+
+function addToDisplay(value) {
+    result.value += value;
+}
+
+function clearDisplay() {
+    result.value = '';
+}
+
+function calculate() {
+    try {
+        result.value = eval(result.value);
+    } catch(error) {
+        alert('Invalid calculation');
+    }
+}
+
+</script>
+</body>
+</html>
